@@ -1,0 +1,34 @@
+# Git
+.git
+.gitignore
+
+# Environment files (will be created in container)
+.env
+
+# IDE and OS files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Documentation
+*.md
+!README.md
+
+# Docker files
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Logs and temporary files (will be created in container)
+log/*
+tmp/*
+cache/*
+
+# Backups (will be created in container)
+backups/*
+
+# Vendor (if using Composer)
+vendor/

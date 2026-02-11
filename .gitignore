@@ -21,6 +21,9 @@ log/*
 *.swo
 *~
 
+# Docker
+docker-compose.override.yml
+
 # Composer
 /vendor/
 composer.lock
