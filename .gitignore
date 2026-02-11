@@ -1,0 +1,26 @@
+# Environment variables
+.env
+
+# Uploads and temporary files
+uploads/*
+!uploads/.htaccess
+tmp/*
+!tmp/.htaccess
+cache/*
+!cache/.htaccess
+backups/*
+!backups/.htaccess
+log/*
+!log/.htaccess
+
+# IDE and OS files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Composer
+/vendor/
+composer.lock
