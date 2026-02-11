@@ -160,6 +160,26 @@ docker run -d \
 5. **Login:**
    Use the admin credentials you created during installation
 
+6. **Security: Delete installation folder (Important!):**
+   After installation is complete, you must delete the `install` folder for security:
+
+   ```bash
+   # Access the container shell
+   docker exec -it rukovoditel-app bash
+
+   # Delete the installation folder
+   rm -rf install/
+
+   # Exit the container
+   exit
+   ```
+
+   Or use a one-liner:
+
+   ```bash
+   docker exec -it rukovoditel-app rm -rf install/
+   ```
+
 ---
 
 ## Configuration
