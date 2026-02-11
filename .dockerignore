@@ -2,6 +2,9 @@
 .git
 .gitignore
 
+# Configuration files with local credentials
+config/database.php
+
 # Environment files (will be created in container)
 .env
 

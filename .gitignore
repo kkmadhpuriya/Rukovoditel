@@ -1,5 +1,6 @@
 # Environment variables
 .env
+config/database.php
 
 # Uploads and temporary files
 uploads/*

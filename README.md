@@ -50,8 +50,6 @@ Pre-built Docker images are available on Docker Hub:
 Create a `docker-compose.yml` file:
 
 ```yaml
-version: "3.8"
-
 services:
   app:
     image: kkmadhpuriya/rukovoditel:latest
@@ -59,12 +57,6 @@ services:
     restart: unless-stopped
     ports:
       - "8080:80"
-    environment:
-      - DB_SERVER=mysql
-      - DB_SERVER_USERNAME=rukovoditel_user
-      - DB_SERVER_PASSWORD=rukovoditel_password
-      - DB_SERVER_PORT=3306
-      - DB_DATABASE=rukovoditel
     depends_on:
       mysql:
         condition: service_healthy
@@ -133,16 +125,14 @@ Access the application at: **http://localhost:8080**
 # Pull the image
 docker pull kkmadhpuriya/rukovoditel:latest
 
-# Run with environment variables (requires existing MySQL)
+# Run the container (requires existing MySQL)
 docker run -d \
   -p 8080:80 \
-  -e DB_SERVER=your_mysql_host \
-  -e DB_SERVER_USERNAME=your_username \
-  -e DB_SERVER_PASSWORD=your_password \
-  -e DB_DATABASE=rukovoditel \
   --name rukovoditel-app \
   kkmadhpuriya/rukovoditel:latest
 ```
+
+**Note:** You'll need to configure the database connection during installation or by editing `config/database.php`.
 
 ---
 
@@ -157,24 +147,34 @@ docker run -d \
 2. **Access the installer:**
    Open your browser and navigate to `http://localhost:8080`
 
-3. **Follow the installation wizard:**
-   - Database credentials are pre-configured (see docker-compose.yml)
-   - Complete the initial setup steps
+3. **Configure database connection:**
+   During installation, use these database credentials:
+   - **Database Host:** `mysql` (or `mysql:3306`)
+   - **Database Name:** `rukovoditel`
+   - **Username:** `rukovoditel_user`
+   - **Password:** `rukovoditel_password`
 
-4. **Login:**
-   Use the credentials created during installation
+4. **Complete the setup:**
+   Follow the installation wizard to finish the initial configuration
+
+5. **Login:**
+   Use the admin credentials you created during installation
 
 ---
 
-## Environment Variables
+## Configuration
 
-| Variable             | Description       | Default       |
-| -------------------- | ----------------- | ------------- |
-| `DB_SERVER`          | Database host     | `localhost`   |
-| `DB_SERVER_USERNAME` | Database username | `root`        |
-| `DB_SERVER_PASSWORD` | Database password | _(empty)_     |
-| `DB_SERVER_PORT`     | Database port     | `3306`        |
-| `DB_DATABASE`        | Database name     | `rukovoditel` |
+### Database Setup
+
+For the Docker Compose setup, the database credentials are:
+
+- **Host:** `mysql` (container name) or `mysql:3306`
+- **Database:** `rukovoditel`
+- **Username:** `rukovoditel_user`
+- **Password:** `rukovoditel_password`
+- **Port:** `3306`
+
+These can be configured in `config/database.php` after installation if needed.
 
 ---
 

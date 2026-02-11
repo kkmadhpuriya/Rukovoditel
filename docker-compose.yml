@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   app:
     build:
@@ -9,14 +7,8 @@ services:
     restart: unless-stopped
     ports:
       - "8080:80"
-    environment:
-      - DB_SERVER=mysql
-      - DB_SERVER_USERNAME=rukovoditel_user
-      - DB_SERVER_PASSWORD=rukovoditel_password
-      - DB_SERVER_PORT=3306
-      - DB_DATABASE=rukovoditel
     volumes:
-      - app-data:/var/www/html
+      - .:/var/www/html
     depends_on:
       mysql:
         condition: service_healthy
@@ -33,7 +25,7 @@ services:
       - MYSQL_USER=rukovoditel_user
       - MYSQL_PASSWORD=rukovoditel_password
     volumes:
-      - mysql-data:/var/lib/mysql
+      - mysql-data-2:/var/lib/mysql
     ports:
       - "3307:3306"
     healthcheck:
@@ -56,9 +48,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password --sql-mode=""
 
 volumes:
-  app-data:
-    driver: local
-  mysql-data:
+  mysql-data-2:
     driver: local
 
 networks:
