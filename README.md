@@ -247,6 +247,16 @@ See [license.gpl.3.0.txt](license.gpl.3.0.txt) for more details.
 
 ---
 
+## Support This Project
+
+If you find this Docker image helpful, consider supporting my work:
+
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoffee.com/kkmadhpuriya)
+
+Your support helps maintain and improve this project!
+
+---
+
 ## Acknowledgments
 
 Special thanks to **Sergey Kharchishin** and **Olga Kharchishina** for creating and maintaining Rukovoditel as an open-source project.
