@@ -15,8 +15,7 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libzip-dev \
     zip \
-    unzip \
-    default-mysql-client \
+    unzip \    
     && rm -rf /var/lib/apt/lists/*
 
 # Configure GD library
@@ -73,6 +72,6 @@ WORKDIR /var/www/html
 
 EXPOSE 80
 
-# Add healthcheck
-HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
-    CMD curl -f http://localhost/ || exit 1
+# # Add healthcheck
+# HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
+#     CMD curl -f http://localhost/ || exit 1
