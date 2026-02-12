@@ -55,6 +55,9 @@ services:
     image: kkmadhpuriya/rukovoditel:latest
     container_name: rukovoditel-app
     restart: unless-stopped
+    environment:
+      - SERVER_NAME=localhost
+      - ENABLE_SSL=false
     ports:
       - "8080:80"
     depends_on:
@@ -195,6 +198,47 @@ For the Docker Compose setup, the database credentials are:
 - **Port:** `3306`
 
 These can be configured in `config/database.php` after installation if needed.
+
+### Environment Variables
+
+The following environment variables can be configured in your `docker-compose.yml`:
+
+#### SERVER_NAME
+
+Sets the Apache ServerName directive to prevent Apache warnings about not being able to determine the server's fully qualified domain name.
+
+- **Default:** `localhost`
+- **Usage:**
+
+  ```yaml
+  services:
+    app:
+      environment:
+        - SERVER_NAME=yourdomain.com # Set your domain
+        # or
+        - SERVER_NAME=localhost # Use localhost (default)
+  ```
+
+**Note:** If you're running this on a production server with a domain name, set this to your domain (e.g., `example.com` or `www.example.com`) to eliminate Apache startup warnings.
+
+#### ENABLE_SSL
+
+Controls whether the application uses SSL/HTTPS connections.
+
+- **Default:** `false`
+- **Accepted values:** `true`, `false`, `1`, `0`, `yes`, `no`, `on`, `off`
+- **Usage:**
+
+  ```yaml
+  services:
+    app:
+      environment:
+        - ENABLE_SSL=true # Enable SSL
+        # or
+        - ENABLE_SSL=false # Disable SSL (default)
+  ```
+
+**Note:** If not set, defaults to `false`. This setting configures the secure webserver option in `config/server.php`.
 
 ---
 

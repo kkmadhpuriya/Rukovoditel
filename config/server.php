@@ -1,7 +1,7 @@
 <?php
 
 // secure webserver
-define('ENABLE_SSL', false);
+define('ENABLE_SSL', filter_var(getenv('ENABLE_SSL') ?: 'false', FILTER_VALIDATE_BOOLEAN));
 
 //Configure server host to build urls correctly in cron
 //Enter [http or https]+[domainname]+[catalog] for example: https://mycompany.com/mypm/
@@ -17,7 +17,7 @@ define('CFG_USE_LDAP_LOGIN_ONLY', false);
  * en_US.UTF-8
  * ru_RU.utf8 
  */
-define('CFG_APP_LOCALE','en_US.UTF-8');
+define('CFG_APP_LOCALE', 'en_US.UTF-8');
 
 //list of available plugins separated by comma
 define('AVAILABLE_PLUGINS', 'ext');
@@ -73,5 +73,4 @@ define('SESSION_COOKIE_PATH', '');
 //force set_mode
 define('DB_FORCE_SQL_MODE', true); //true or false
 define('DB_SET_SQL_MODE', ''); //to remove STRICT_TRANS_TABLES
-        
-	
+

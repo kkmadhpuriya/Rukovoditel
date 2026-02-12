@@ -5,6 +5,9 @@ services:
       dockerfile: Dockerfile
     container_name: rukovoditel-app
     restart: unless-stopped
+    environment:
+      - SERVER_NAME=localhost
+      - ENABLE_SSL=false
     ports:
       - "8080:80"
     volumes:
