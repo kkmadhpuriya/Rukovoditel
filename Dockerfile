@@ -1,7 +1,12 @@
 FROM php:8.2-apache
 
+ENV SERVER_NAME=localhost
+
 # Enable Apache rewrite and headers modules
 RUN a2enmod rewrite headers
+
+# Set global ServerName to remove warning
+RUN echo "ServerName ${SERVER_NAME}" >> /etc/apache2/apache2.conf
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
